@@ -1,17 +1,29 @@
 fn main() {
-    let mut i = 1;
-    while random_number(500000000) != 0 {
-        i += 1;
+
+    let mut eligible_users: Vec<String> = vec![];
+
+    // Just some logic to generate random sized arrays. 
+    let mut eligible_amount = random_number(10);
+    while eligible_amount > 0 {
+        eligible_users.push("User_".to_string() + &eligible_amount.to_string());
+        eligible_amount -= 1;
     }
-    
-    println!("It took {} attempts to hit 0", i);
+    //
+
+    println!("Eligible users: {:?}", eligible_users);
+    if eligible_users.len() == 0 { println!("No eligible users."); }
+    else { println!("Winner: {}", select_winner(eligible_users)); }
+
 }
 
 
 
 use rand::Rng;
 
-
+fn select_winner(user_list: Vec<String>) -> String {
+    let winner = &user_list[random_number(user_list.len().try_into().unwrap()) as usize];
+    winner.to_string()
+}
 
 fn random_number(max: i32) -> i32 {
     // We intended max to be the .len() of the vector/array of users eligible.

@@ -3,6 +3,7 @@ fn main() {
     while random_number(500000000) != 0 {
         i += 1;
     }
+    
     println!("It took {} attempts to hit 0", i);
 }
 

@@ -3,7 +3,6 @@ use std::time::SystemTime;
 use humantime::Rfc3339Timestamp;
 use rand::Rng;
 
-
 pub fn random_number(max: i32) -> i32 {
     // We intended max to be the .len() of the vector/array of users eligible.
     let mut result = rand::thread_rng().gen_range(0..max);

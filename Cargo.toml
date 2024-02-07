@@ -7,3 +7,10 @@ edition = "2021"
 
 [dependencies]
 rand = "0.8.5"
+log = "0.4.0"
+humantime = "2.1.0"
+fern = "0.6.2"
+tmi = "0.4.0"
+anyhow = "1.0.79"
+tokio = { version = "1.36.0", features = ["full"] }
+clap = "4.4.18"

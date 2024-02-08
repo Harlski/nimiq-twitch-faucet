@@ -2,6 +2,7 @@ use log::{info};
 use tmi::{Channel, Client, Message};
 use anyhow::Result;
 use tokio::main;
+
 // fn main() {
 //     faucet::setup_logger();
 
@@ -24,7 +25,7 @@ async fn main() -> Result<()> {
 
     let channels = vec![
         Channel::parse("#nimiqlive".to_string()),
-        // Add more channels as needed
+        Channel::parse("#piratesoftware".to_string()),
     ];
 
     let channels: Vec<tmi::Channel> = channels
@@ -45,7 +46,7 @@ async fn run(channels: &[tmi::Channel]) -> anyhow::Result<()> {
     let msg = client.recv().await?;
     match msg.as_typed()? {
       tmi::Message::Privmsg(msg) => {
-        info!("{}: {}", msg.sender().name(), msg.text());
+        info!("{}: {} -- {:?}", msg.sender().name(), msg.text(), msg);
       }
       tmi::Message::Reconnect => {
         client.reconnect().await?;

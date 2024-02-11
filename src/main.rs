@@ -45,7 +45,7 @@ async fn run(channels: &[tmi::Channel]) -> anyhow::Result<()> {
     let msg = client.recv().await?;
     match msg.as_typed()? {
       tmi::Message::Privmsg(msg) => {
-          info!("{}: {} -- {:?}", msg.sender().name(), msg.text(), msg);
+          info!("{}: {} -- {:?} ", msg.sender().name(), msg.text(), msg);
       }
       tmi::Message::Reconnect => {
         client.reconnect().await?;

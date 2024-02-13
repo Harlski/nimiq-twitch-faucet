@@ -1,5 +1,5 @@
 use log::{info};
-use tmi::{Channel, Client, Message};
+use tmi::{Channel, Client, Message, Badge};
 use anyhow::Result;
 use tokio::main;
 
@@ -45,13 +45,12 @@ async fn run(channels: &[tmi::Channel]) -> anyhow::Result<()> {
     let msg = client.recv().await?;
     match msg.as_typed()? {
       tmi::Message::Privmsg(msg) => {
+          let has_subscriber_badge = msg.badges().any(|badge| matches!(badge, Badge::Subscriber(_)));
           info!("{}: {} -- {:?} ", msg.sender().name(), msg.text(), msg);
-          for badge in msg.badges(){
-            if badge == Subscriber() {
-              println!("Yeah subbed");
-            }
+          if has_subscriber_badge {
+            println!("Truly a subscriber!");
           }
-      }
+        }
       tmi::Message::Reconnect => {
         client.reconnect().await?;
         client.join_all(channels).await?;

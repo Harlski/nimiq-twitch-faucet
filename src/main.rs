@@ -1,3 +1,9 @@
+// To do:
+// I need to create a function that will add user to eligible_users array, confirm they're not already eligble etc.
+// I need to create a clear eligible_users function
+// I need to organize the flow of adding users to eligibility, otherwise I'll end up putting all my login in the tmi::Message::Privmsg logic. Which is not good..
+// Slowly chunging away at this. 
+
 use log::{info};
 use tmi::{Channel, Client, Message, Badge};
 use anyhow::Result;
@@ -41,15 +47,30 @@ async fn run(channels: &[tmi::Channel]) -> anyhow::Result<()> {
   let mut client = tmi::Client::connect().await?;
   client.join_all(channels).await?;
 
+  let mut eligible_users: Vec<NlUser> = vec![];
+
+  #[derive(Debug)]
+  struct NlUser {
+    username: String,
+    is_subscribed: bool
+  }
+
   loop {
     let msg = client.recv().await?;
     match msg.as_typed()? {
       tmi::Message::Privmsg(msg) => {
-          let has_subscriber_badge = msg.badges().any(|badge| matches!(badge, Badge::Subscriber(_)));
-          info!("{}: {} -- {:?} ", msg.sender().name(), msg.text(), msg);
-          if has_subscriber_badge {
-            println!("Truly a subscriber!");
+          let user = NlUser {
+            username: String::from(msg.sender().name()),
+            is_subscribed: msg.badges().any(|badge| matches!(badge, Badge::Subscriber(_))),
+          };
+
+          if user.is_subscribed {
+            info!("[S] {}: {}", user.username, msg.text());
+            eligible_users.push(user);
+          } else {
+            info!("[N] {}: {}", user.username, msg.text());
           }
+          println!("Current Users (TEST): {:?}", eligible_users); // Able to add users to Eligible array, no checks to confirm if a user is already in - so will grow indefinitely.
         }
       tmi::Message::Reconnect => {
         client.reconnect().await?;

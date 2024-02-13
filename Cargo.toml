@@ -14,3 +14,4 @@ tmi = "0.4.0"
 anyhow = "1.0.79"
 tokio = { version = "1.36.0", features = ["full"] }
 clap = "4.4.18"
+once_cell = "1.19.0"

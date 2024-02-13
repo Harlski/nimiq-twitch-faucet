@@ -216,6 +216,7 @@ dependencies = [
  "fern",
  "humantime",
  "log",
+ "once_cell",
  "rand",
  "tmi",
  "tokio",

@@ -2,6 +2,21 @@ use log::{debug, error, info, trace, warn};
 use std::time::SystemTime;
 // use humantime::Rfc3339Timestamp;
 use rand::Rng;
+use tmi::{Badge};
+
+#[derive(Debug)]
+pub struct NlUser {
+  pub username: String,
+  pub is_subscribed: bool,
+}
+
+pub fn return_user_struct(msg: &tmi::Privmsg) -> NlUser {
+    let user = NlUser {
+      username: String::from(msg.sender().name()),
+      is_subscribed: msg.badges().any(|badge| matches!(badge, Badge::Subscriber(_))),
+    };
+    user
+  }
 
 pub fn random_number(max: i32) -> i32 {
     // We intended max to be the .len() of the vector/array of users eligible.

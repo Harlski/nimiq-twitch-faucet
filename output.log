@@ -1,0 +1,80 @@
+[2024-02-15T01:00:40Z DEBUG rustls::client::hs] No cached session for DnsName("irc.chat.twitch.tv")
+[2024-02-15T01:00:40Z DEBUG rustls::client::hs] Not resuming any session
+[2024-02-15T01:00:40Z DEBUG rustls::client::hs] ALPN protocol is None
+[2024-02-15T01:00:40Z DEBUG rustls::client::hs] Using ciphersuite TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[2024-02-15T01:00:40Z DEBUG rustls::client::tls12] ECDHE curve is ECParameters { curve_type: NamedCurve, named_group: secp256r1 }
+[2024-02-15T01:00:40Z DEBUG rustls::client::tls12] Server DNS name is DnsName("irc.chat.twitch.tv")
+[2024-02-15T01:05:18Z DEBUG rustls::client::hs] No cached session for DnsName("irc.chat.twitch.tv")
+[2024-02-15T01:05:18Z DEBUG rustls::client::hs] Not resuming any session
+[2024-02-15T01:05:18Z DEBUG rustls::client::hs] ALPN protocol is None
+[2024-02-15T01:05:18Z DEBUG rustls::client::hs] Using ciphersuite TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[2024-02-15T01:05:18Z DEBUG rustls::client::tls12] ECDHE curve is ECParameters { curve_type: NamedCurve, named_group: secp256r1 }
+[2024-02-15T01:05:18Z DEBUG rustls::client::tls12] Server DNS name is DnsName("irc.chat.twitch.tv")
+[2024-02-15T01:06:41Z DEBUG rustls::client::hs] No cached session for DnsName("irc.chat.twitch.tv")
+[2024-02-15T01:06:41Z DEBUG rustls::client::hs] Not resuming any session
+[2024-02-15T01:06:41Z DEBUG rustls::client::hs] ALPN protocol is None
+[2024-02-15T01:06:41Z DEBUG rustls::client::hs] Using ciphersuite TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[2024-02-15T01:06:41Z DEBUG rustls::client::tls12] ECDHE curve is ECParameters { curve_type: NamedCurve, named_group: secp256r1 }
+[2024-02-15T01:06:41Z DEBUG rustls::client::tls12] Server DNS name is DnsName("irc.chat.twitch.tv")
+[2024-02-15T01:10:00Z DEBUG rustls::client::hs] No cached session for DnsName("irc.chat.twitch.tv")
+[2024-02-15T01:10:00Z DEBUG rustls::client::hs] Not resuming any session
+[2024-02-15T01:10:00Z DEBUG rustls::client::hs] ALPN protocol is None
+[2024-02-15T01:10:00Z DEBUG rustls::client::hs] Using ciphersuite TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[2024-02-15T01:10:00Z DEBUG rustls::client::tls12] ECDHE curve is ECParameters { curve_type: NamedCurve, named_group: secp256r1 }
+[2024-02-15T01:10:00Z DEBUG rustls::client::tls12] Server DNS name is DnsName("irc.chat.twitch.tv")
+[2024-02-15T01:11:38Z DEBUG rustls::client::hs] No cached session for DnsName("irc.chat.twitch.tv")
+[2024-02-15T01:11:38Z DEBUG rustls::client::hs] Not resuming any session
+[2024-02-15T01:11:39Z DEBUG rustls::client::hs] ALPN protocol is None
+[2024-02-15T01:11:39Z DEBUG rustls::client::hs] Using ciphersuite TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[2024-02-15T01:11:39Z DEBUG rustls::client::tls12] ECDHE curve is ECParameters { curve_type: NamedCurve, named_group: secp256r1 }
+[2024-02-15T01:11:39Z DEBUG rustls::client::tls12] Server DNS name is DnsName("irc.chat.twitch.tv")
+[2024-02-15T01:15:01Z DEBUG rustls::client::hs] No cached session for DnsName("irc.chat.twitch.tv")
+[2024-02-15T01:15:01Z DEBUG rustls::client::hs] Not resuming any session
+[2024-02-15T01:15:01Z DEBUG rustls::client::hs] ALPN protocol is None
+[2024-02-15T01:15:01Z DEBUG rustls::client::hs] Using ciphersuite TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[2024-02-15T01:15:01Z DEBUG rustls::client::tls12] ECDHE curve is ECParameters { curve_type: NamedCurve, named_group: secp256r1 }
+[2024-02-15T01:15:01Z DEBUG rustls::client::tls12] Server DNS name is DnsName("irc.chat.twitch.tv")
+[2024-02-15T02:16:08Z DEBUG rustls::client::hs] No cached session for DnsName("irc.chat.twitch.tv")
+[2024-02-15T02:16:08Z DEBUG rustls::client::hs] Not resuming any session
+[2024-02-15T02:16:08Z DEBUG rustls::client::hs] ALPN protocol is None
+[2024-02-15T02:16:08Z DEBUG rustls::client::hs] Using ciphersuite TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[2024-02-15T02:16:08Z DEBUG rustls::client::tls12] ECDHE curve is ECParameters { curve_type: NamedCurve, named_group: secp256r1 }
+[2024-02-15T02:16:08Z DEBUG rustls::client::tls12] Server DNS name is DnsName("irc.chat.twitch.tv")
+[2024-02-15T06:20:57Z DEBUG rustls::client::hs] No cached session for DnsName("irc.chat.twitch.tv")
+[2024-02-15T06:20:57Z DEBUG rustls::client::hs] Not resuming any session
+[2024-02-15T06:20:57Z DEBUG rustls::client::hs] ALPN protocol is None
+[2024-02-15T06:20:57Z DEBUG rustls::client::hs] Using ciphersuite TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[2024-02-15T06:20:57Z DEBUG rustls::client::tls12] ECDHE curve is ECParameters { curve_type: NamedCurve, named_group: secp256r1 }
+[2024-02-15T06:20:57Z DEBUG rustls::client::tls12] Server DNS name is DnsName("irc.chat.twitch.tv")
+[2024-02-15T06:25:23Z INFO faucet] Winner was: NimiqLIVE - Eligible { eligible_users: [NlUser { username: "NimiqLIVE", is_subscribed: true }] }
+[2024-02-15T06:30:20Z INFO faucet] Winner was: mozgha - Eligible { eligible_users: [NlUser { username: "mozgha", is_subscribed: true }, NlUser { username: "NimiqLIVE", is_subscribed: true }, NlUser { username: "metinyi", is_subscribed: true }] }
+[2024-02-15T06:35:19Z INFO faucet] Winner was: Just_Writing_Chat - Eligible { eligible_users: [NlUser { username: "Just_Writing_Chat", is_subscribed: true }, NlUser { username: "NimiqLIVE", is_subscribed: true }] }
+[2024-02-15T06:39:39Z INFO faucet] Winner was: NimiqLIVE - Eligible { eligible_users: [NlUser { username: "NimiqLIVE", is_subscribed: true }] }
+[2024-02-15T06:44:37Z INFO faucet] Winner was: NimiqLIVE - Eligible { eligible_users: [NlUser { username: "NimiqLIVE", is_subscribed: true }] }
+[2024-02-15T07:04:27Z DEBUG rustls::client::hs] No cached session for DnsName("irc.chat.twitch.tv")
+[2024-02-15T07:04:27Z DEBUG rustls::client::hs] Not resuming any session
+[2024-02-15T07:04:28Z DEBUG rustls::client::hs] ALPN protocol is None
+[2024-02-15T07:04:28Z DEBUG rustls::client::hs] Using ciphersuite TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[2024-02-15T07:04:28Z DEBUG rustls::client::tls12] ECDHE curve is ECParameters { curve_type: NamedCurve, named_group: secp256r1 }
+[2024-02-15T07:04:28Z DEBUG rustls::client::tls12] Server DNS name is DnsName("irc.chat.twitch.tv")
+[2024-02-15T07:09:19Z INFO faucet] Winner was: nohwolf - Eligible { eligible_users: [NlUser { username: "NimiqLIVE", is_subscribed: true }, NlUser { username: "nohwolf", is_subscribed: false }, NlUser { username: "waygrow", is_subscribed: true }, NlUser { username: "orioncrypto", is_subscribed: false }] }
+[2024-02-15T07:13:40Z INFO faucet] Winner was: emilykimau1 - Eligible { eligible_users: [NlUser { username: "NimiqLIVE", is_subscribed: true }, NlUser { username: "emilykimau1", is_subscribed: false }] }
+[2024-02-15T07:18:12Z INFO faucet] Winner was: NimiqLIVE - Eligible { eligible_users: [NlUser { username: "NimiqLIVE", is_subscribed: true }] }
+[2024-02-15T07:23:03Z INFO faucet] Winner was: metinyi - Eligible { eligible_users: [NlUser { username: "mozgha", is_subscribed: true }, NlUser { username: "NimiqLIVE", is_subscribed: true }, NlUser { username: "metinyi", is_subscribed: true }] }
+[2024-02-15T07:27:56Z INFO faucet] Winner was: NimiqLIVE - Eligible { eligible_users: [NlUser { username: "NimiqLIVE", is_subscribed: true }] }
+[2024-02-15T07:32:20Z INFO faucet] Winner was: NimiqLIVE - Eligible { eligible_users: [NlUser { username: "NimiqLIVE", is_subscribed: true }, NlUser { username: "fratta2", is_subscribed: false }] }
+[2024-02-15T07:36:36Z DEBUG rustls::client::hs] No cached session for DnsName("irc.chat.twitch.tv")
+[2024-02-15T07:36:36Z DEBUG rustls::client::hs] Not resuming any session
+[2024-02-15T07:36:36Z DEBUG rustls::client::hs] ALPN protocol is None
+[2024-02-15T07:36:36Z DEBUG rustls::client::hs] Using ciphersuite TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+[2024-02-15T07:36:36Z DEBUG rustls::client::tls12] ECDHE curve is ECParameters { curve_type: NamedCurve, named_group: secp256r1 }
+[2024-02-15T07:36:36Z DEBUG rustls::client::tls12] Server DNS name is DnsName("irc.chat.twitch.tv")
+[2024-02-15T07:41:01Z INFO faucet] 
+Winner was: NimiqLIVE - Eligible { eligible_users: [NlUser { username: "NimiqLIVE", is_subscribed: true }] }
+
+[2024-02-15T07:45:41Z INFO faucet] 
+Winner was: NimiqLIVE - Eligible { eligible_users: [NlUser { username: "NimiqLIVE", is_subscribed: true }] }
+
+[2024-02-15T07:49:57Z INFO faucet] 
+Winner was: RJwired - Eligible { eligible_users: [NlUser { username: "RJwired", is_subscribed: false }, NlUser { username: "NimiqLIVE", is_subscribed: true }] }
+

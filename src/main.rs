@@ -7,7 +7,7 @@
 use log::{info};
 use tmi::{Channel, Client, Message, Badge};
 use anyhow::Result;
-use faucet::{return_user_struct, NlUser};
+use faucet::{return_user_struct, NlUser, Eligible};
 
 use tokio::main;
 
@@ -51,49 +51,23 @@ async fn run(channels: &[tmi::Channel]) -> anyhow::Result<()> {
 
   let mut eligible = Eligible { eligible_users: vec![] };
 
-  #[derive(Debug)]
-  struct Eligible {
-    eligible_users: Vec<NlUser>,
-  }
-
-  impl Eligible {
-    fn validate_user(&mut self, user: NlUser) {
-        let mut user_found = false;
-
-        for eli_user in &self.eligible_users {
-            if eli_user.username == user.username {
-                println!("User is already in: {}", user.username);
-                user_found = true;
-                break; 
-            }
-        }
-
-        if !user_found {
-            println!("User is not in the list.");
-            self.eligible_users.push(user);
-        }
-    }
-}
-
   loop {
     let msg = client.recv().await?;
     match msg.as_typed()? {
       tmi::Message::Privmsg(msg) => {
           let user = faucet::return_user_struct(&msg);
-
-          if user.is_subscribed {
-            info!("[S] {}: {}", user.username, msg.text());
-            Eligible::validate_user(&mut eligible, user);
-          } else {
-            info!("[N] {}: {}", user.username, msg.text());
-          }
-          println!("Current Users (TEST): {:?}", eligible); // Able to add users to Eligible array, no checks to confirm if a user is already in - so will grow indefinitely.
+          eligible.validate_user(user);
+          eligible.list_eligible();
         }
       tmi::Message::Reconnect => {
         client.reconnect().await?;
         client.join_all(channels).await?;
       }
       tmi::Message::Ping(ping) => {
+        if !eligible.eligible_users.is_empty(){
+          faucet::select_winner(&eligible);
+        }
+        eligible.clear_eligible();
         client.pong(&ping).await?;
       }
       _ => {}

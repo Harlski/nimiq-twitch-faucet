@@ -10,6 +10,42 @@ pub struct NlUser {
   pub is_subscribed: bool,
 }
 
+#[derive(Debug)]
+pub struct Eligible {
+  pub eligible_users: Vec<NlUser>,
+}
+
+impl Eligible {
+  pub fn validate_user(&mut self, user: NlUser) {
+      let mut user_found = false;
+
+      for eli_user in &self.eligible_users {
+          if eli_user.username == user.username {
+              println!("\nUser is already in: {}", user.username);
+              user_found = true;
+              break; 
+          }
+      }
+
+      if !user_found {
+          println!("\nUser is not in the list.");
+          self.eligible_users.push(user);
+      }
+  }
+
+  pub fn list_eligible(&mut self) {
+    print!("\nEligible Users:");
+    for user in &self.eligible_users{
+      print!(" {},", user.username);
+    }
+  }
+
+  pub fn clear_eligible(&mut self){
+    println!("\nClearing Users");
+    self.eligible_users.clear();
+  }
+}
+
 pub fn return_user_struct(msg: &tmi::Privmsg) -> NlUser {
     let user = NlUser {
       username: String::from(msg.sender().name()),
@@ -20,14 +56,14 @@ pub fn return_user_struct(msg: &tmi::Privmsg) -> NlUser {
 
 pub fn random_number(max: i32) -> i32 {
     // We intended max to be the .len() of the vector/array of users eligible.
-    let mut result = rand::thread_rng().gen_range(0..max);
+    let result = rand::thread_rng().gen_range(0..max);
     result
 }
 
-pub fn select_winner(user_list: Vec<String>) -> String {
-    let winner = &user_list[random_number(user_list.len().try_into().unwrap()) as usize];
-    info!("Winner was: {} - {:?}", &winner, user_list);
-    winner.to_string()
+pub fn select_winner(user_list: &Eligible) -> String {
+    let winner = &user_list.eligible_users[random_number(user_list.eligible_users.len().try_into().unwrap()) as usize];
+    info!("\nWinner was: {} - {:?}\n", &winner.username, user_list);
+    winner.username.clone()
 }
 
 pub fn setup_logger() -> Result<(), fern::InitError> {

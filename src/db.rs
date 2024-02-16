@@ -1,6 +1,7 @@
 use mongodb::{Client, options::ClientOptions};
+use dotenv::dotenv;
 
-let mut client_options = ClientOptions::parse("mongodb://localhost:9999").await?;
+let mut client_options = ClientOptions::parse(dotenv::var("MONGO_DB").unwrap()).await?;
 
 client_options.app_name = Some("Nimiq LIVE DB".to_string();
 

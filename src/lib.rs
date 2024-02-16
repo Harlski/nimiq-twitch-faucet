@@ -1,4 +1,4 @@
-use dotenv::dotenv
+use dotenv::dotenv;
 use log::{debug, error, info, trace, warn};
 use std::time::SystemTime;
 // use humantime::Rfc3339Timestamp;
@@ -23,7 +23,7 @@ impl Eligible {
 
       for eli_user in &self.eligible_users {
           if eli_user.username == user.username {
-              println!("\nUser is already in: {}", user.username);
+              println!("User is already in: {}", user.username);
               user_found = true;
               break; 
           }
@@ -46,6 +46,7 @@ impl Eligible {
   // Clears eligibility list.
   pub fn clear_eligible(&mut self){
     println!("\nClearing Users");
+    self.list_eligible();
     self.eligible_users.clear();
   }
 }
@@ -67,7 +68,8 @@ pub fn random_number(max: i32) -> i32 {
 }
 
 // Selects a random user from the eligible users list, returns that user.
-pub fn select_winner(user_list: &Eligible) -> String {
+pub fn select_winner(user_list: &mut Eligible) -> String {
+    user_list.list_eligible();
     let winner = &user_list.eligible_users[random_number(user_list.eligible_users.len().try_into().unwrap()) as usize];
     info!("\nWinner was: {} - {:?}\n", &winner.username, user_list);
     winner.username.clone()

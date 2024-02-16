@@ -1,3 +1,4 @@
+use dotenv::dotenv
 use log::{debug, error, info, trace, warn};
 use std::time::SystemTime;
 // use humantime::Rfc3339Timestamp;
@@ -16,6 +17,7 @@ pub struct Eligible {
 }
 
 impl Eligible {
+  // Validate user is used to check to see if a user is already in the eligiblity list
   pub fn validate_user(&mut self, user: NlUser) {
       let mut user_found = false;
 
@@ -33,6 +35,7 @@ impl Eligible {
       }
   }
 
+  // List eligible in the current list, ex: 'Eligible Users: NimiqLIVE, user1, user2' etc.
   pub fn list_eligible(&mut self) {
     print!("\nEligible Users:");
     for user in &self.eligible_users{
@@ -40,12 +43,14 @@ impl Eligible {
     }
   }
 
+  // Clears eligibility list.
   pub fn clear_eligible(&mut self){
     println!("\nClearing Users");
     self.eligible_users.clear();
   }
 }
 
+// This function takes in a TMI message and outputs the data into a NlUser struct - which contains useful information about the user.
 pub fn return_user_struct(msg: &tmi::Privmsg) -> NlUser {
     let user = NlUser {
       username: String::from(msg.sender().name()),
@@ -54,18 +59,21 @@ pub fn return_user_struct(msg: &tmi::Privmsg) -> NlUser {
     user
   }
 
+// Takes a max number (Generally eligible_users.len()) and returns a random number 0..max
 pub fn random_number(max: i32) -> i32 {
     // We intended max to be the .len() of the vector/array of users eligible.
     let result = rand::thread_rng().gen_range(0..max);
     result
 }
 
+// Selects a random user from the eligible users list, returns that user.
 pub fn select_winner(user_list: &Eligible) -> String {
     let winner = &user_list.eligible_users[random_number(user_list.eligible_users.len().try_into().unwrap()) as usize];
     info!("\nWinner was: {} - {:?}\n", &winner.username, user_list);
     winner.username.clone()
 }
 
+// This logs to output.txt
 pub fn setup_logger() -> Result<(), fern::InitError> {
     fern::Dispatch::new()
         .format(|out, message, record| {

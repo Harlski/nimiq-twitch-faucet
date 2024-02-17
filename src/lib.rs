@@ -4,6 +4,12 @@ use std::time::SystemTime;
 // use humantime::Rfc3339Timestamp;
 use rand::Rng;
 use tmi::{Badge};
+use random_str as random;
+
+#[derive(Debug)]
+pub struct EntryCode {
+  pub code: String,
+}
 
 #[derive(Debug)]
 pub struct NlUser {
@@ -14,6 +20,18 @@ pub struct NlUser {
 #[derive(Debug)]
 pub struct Eligible {
   pub eligible_users: Vec<NlUser>,
+}
+
+impl EntryCode{
+  pub fn generate_new(&mut self){
+    let length = 4;
+    let lowercase = true;
+    let uppercase = true;
+    let numbers = true;
+    let symbols = false;
+    self.code = random::get_string(length, lowercase, uppercase, numbers, symbols);
+    println!("New code: {}", self.code);
+  }
 }
 
 impl Eligible {
@@ -30,13 +48,17 @@ impl Eligible {
       }
 
       if !user_found {
-          println!("\nUser is not in the list.");
+          println!("{:?} is not in the list.", &user.username);
           self.eligible_users.push(user);
       }
   }
 
   // List eligible in the current list, ex: 'Eligible Users: NimiqLIVE, user1, user2' etc.
   pub fn list_eligible(&mut self) {
+    if self.eligible_users.len() == 0 {
+      println!("Eligible Users: None");
+      return;
+    }
     print!("\nEligible Users:");
     for user in &self.eligible_users{
       print!(" {},", user.username);
@@ -53,6 +75,7 @@ impl Eligible {
 
 // This function takes in a TMI message and outputs the data into a NlUser struct - which contains useful information about the user.
 pub fn return_user_struct(msg: &tmi::Privmsg) -> NlUser {
+    
     let user = NlUser {
       username: String::from(msg.sender().name()),
       is_subscribed: msg.badges().any(|badge| matches!(badge, Badge::Subscriber(_))),

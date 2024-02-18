@@ -5,6 +5,7 @@ use std::time::SystemTime;
 use rand::Rng;
 use tmi::{Badge};
 use random_str as random;
+pub mod db;
 
 #[derive(Debug)]
 pub struct EntryCode {
@@ -41,6 +42,7 @@ impl Eligible {
 
       for eli_user in &self.eligible_users {
           if eli_user.username == user.username {
+              db::do_something(eli_user);
               println!("User is already in: {}", user.username);
               user_found = true;
               break; 

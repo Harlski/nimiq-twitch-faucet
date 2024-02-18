@@ -104,16 +104,16 @@ async fn on_msg(client: &mut tmi::Client, msg: tmi::Privmsg<'_>, code: &EntryCod
   println!("< {}: {}", msg.channel(), send_msg);
   return Ok(())
 }
-  if msg.sender().name() == "NimiqLIVE" {
-    let send_msg = "nimiqlHEART";
-    client
-    .privmsg(msg.channel(), &send_msg)
-    .reply_to(msg.message_id())
-    .send()
-    .await?;
-  println!("< {}: {}", msg.channel(), send_msg);
-  return Ok(())
-  }
+  // if msg.sender().name() == "NimiqLIVE" {
+  //   let send_msg = "nimiqlHEART";
+  //   client
+  //   .privmsg(msg.channel(), &send_msg)
+  //   .reply_to(msg.message_id())
+  //   .send()
+  //   .await?;
+  // println!("< {}: {}", msg.channel(), send_msg);
+  // return Ok(())
+  // }
  
 
   Ok(())

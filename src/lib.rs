@@ -5,7 +5,7 @@ use std::time::SystemTime;
 use rand::Rng;
 use tmi::{Badge};
 use random_str as random;
-pub mod db;
+pub mod db ;
 
 #[derive(Debug)]
 pub struct EntryCode {

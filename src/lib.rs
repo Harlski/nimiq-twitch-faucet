@@ -5,7 +5,7 @@ use std::time::SystemTime;
 use rand::Rng;
 use tmi::{Badge};
 use random_str as random;
-pub mod db ;
+// pub mod db ;
 
 #[derive(Debug)]
 pub struct EntryCode {
@@ -37,22 +37,24 @@ impl EntryCode{
 
 impl Eligible {
   // Validate user is used to check to see if a user is already in the eligiblity list
-  pub fn validate_user(&mut self, user: NlUser) {
+  pub fn validate_user(&mut self, user: NlUser) -> Option<bool>{
       let mut user_found = false;
 
       for eli_user in &self.eligible_users {
           if eli_user.username == user.username {
-              db::do_something(eli_user);
+              // db::do_something(eli_user);
               println!("User is already in: {}", user.username);
               user_found = true;
-              break; 
+              Some(true);
           }
       }
 
       if !user_found {
           println!("{:?} is not in the list.", &user.username);
           self.eligible_users.push(user);
+         return None
       }
+      None
   }
 
   // List eligible in the current list, ex: 'Eligible Users: NimiqLIVE, user1, user2' etc.

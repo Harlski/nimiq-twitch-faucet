@@ -68,7 +68,7 @@ async fn run(mut client: tmi::Client, channels: Vec<tmi::Channel>) -> Result<()>
         let user = faucet::return_user_struct(&msg);
         eligible.validate_user(user);
         // eligible.list_eligible();
-        on_msg(&mut client, msg, &entry_code).await?;
+        on_msg(&mut client, msg, &entry_code, &eligible).await?;
         entry_code.generate_new();
 
       }
@@ -87,7 +87,7 @@ async fn run(mut client: tmi::Client, channels: Vec<tmi::Channel>) -> Result<()>
 
 
 
-async fn on_msg(client: &mut tmi::Client, msg: tmi::Privmsg<'_>, code: &EntryCode) -> Result<()> {
+async fn on_msg(client: &mut tmi::Client, msg: tmi::Privmsg<'_>, code: &EntryCode, eligible: &Eligible) -> Result<()> {
   println!("\n{}: {}", msg.sender().name(), msg.text());
 
   if client.credentials().is_anon() {
@@ -95,7 +95,13 @@ async fn on_msg(client: &mut tmi::Client, msg: tmi::Privmsg<'_>, code: &EntryCod
   }
 
   if msg.text() == code.code {
-    let send_msg = "nimiqlSUN";
+    let mut send_msg = "";
+    let already_eligible = eligible.validate_user(msg.sender().name());
+    match already_eligible{
+      Some(x) => send_msg = "You are already eligible, no need to re-enter",
+      None => send_msg = "You are now eligible! nimiqlSUN"
+    }
+
     client
     .privmsg(msg.channel(), &send_msg)
     .reply_to(msg.message_id())
@@ -104,16 +110,16 @@ async fn on_msg(client: &mut tmi::Client, msg: tmi::Privmsg<'_>, code: &EntryCod
   println!("< {}: {}", msg.channel(), send_msg);
   return Ok(())
 }
-  // if msg.sender().name() == "NimiqLIVE" {
-  //   let send_msg = "nimiqlHEART";
-  //   client
-  //   .privmsg(msg.channel(), &send_msg)
-  //   .reply_to(msg.message_id())
-  //   .send()
-  //   .await?;
-  // println!("< {}: {}", msg.channel(), send_msg);
-  // return Ok(())
-  // }
+  if msg.sender().name() != "NimiqLIVE" {
+    let send_msg = "nimiqlHEART";
+    client
+    .privmsg(msg.channel(), &send_msg)
+    .reply_to(msg.message_id())
+    .send()
+    .await?;
+  println!("< {}: {}", msg.channel(), send_msg);
+  return Ok(())
+  }
  
 
   Ok(())

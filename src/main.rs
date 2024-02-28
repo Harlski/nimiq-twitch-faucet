@@ -3,9 +3,9 @@ use clap::Parser;
 use tokio::select;
 use tokio::signal::ctrl_c;
 use faucet::{return_user_struct, NlUser, Eligible, EntryCode};
-
+ 
 #[derive(Parser)]
-#[command(author, version)]
+#[command(author, version)] 
 struct Args {
   /// Login username
   #[arg(long)]
